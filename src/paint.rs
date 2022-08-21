@@ -5,18 +5,6 @@
 pub use ansi_term::Colour::{self, Red, Green, White, Blue, Purple, Cyan, Yellow};
 pub use ansi_term::Style;
 
-// #[derive(Debug, Clone, Copy)]
-// struct Color {
-// 	inner: Colour,
-// 	display: bool
-// }
-
-// impl Color {
-// 	fn new(inner: Colour, display: bool) -> Self {
-// 		Self { inner, display }
-// 	}
-// }
-
 // make windows print colors
 #[cfg(windows)]
 #[ctor::ctor]

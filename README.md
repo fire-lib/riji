@@ -1,5 +1,5 @@
 
-This a library and a binary.
+This is a library and a binary.
 
 ## Warning
 The api may not be stable.
