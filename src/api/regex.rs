@@ -88,12 +88,12 @@ impl Regex {
 
 pub fn add(engine: &mut Engine) {
 	engine
-		.register_result_fn("regex", Regex::new)
+		.register_fn("regex", Regex::new)
 		.register_fn("matches", Regex::matches)
 		.register_fn("replace", Regex::replace)
 		.register_fn("find", Regex::find)
 		.register_fn("captures", Regex::captures)
 		.register_fn("captures_all", Regex::captures_all)
-		.register_result_fn("replace_file", Regex::replace_file)
-		.register_result_fn("matches_file", Regex::matches_file);
+		.register_fn("replace_file", Regex::replace_file)
+		.register_fn("matches_file", Regex::matches_file);
 }

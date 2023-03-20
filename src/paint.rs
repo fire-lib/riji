@@ -1,6 +1,4 @@
-
 #![allow(unused_macros)]
-
 
 pub use ansi_term::Colour::{self, Red, Green, White, Blue, Purple, Cyan, Yellow};
 pub use ansi_term::Style;

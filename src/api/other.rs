@@ -69,6 +69,6 @@ pub fn add(engine: &mut Engine) {
 		.register_fn("uppercase", uppercase)
 		.register_fn("starts_with", starts_with)
 		.register_fn("ends_with", ends_with)
-		.register_result_fn("sort_strs", sort_strs)
+		.register_fn("sort_strs", sort_strs)
 		.register_fn("env_os", env_os);
 }

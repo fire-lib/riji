@@ -177,13 +177,13 @@ pub fn add(engine: &mut Engine) {
 
 	engine
 		.register_fn("cmd", Cmd::new)
-		.register_result_fn("cmd", Cmd::with_args)
+		.register_fn("cmd", Cmd::with_args)
 		.register_fn("arg", Cmd::arg)
-		.register_result_fn("args", Cmd::args)
+		.register_fn("args", Cmd::args)
 		.register_fn("dir", Cmd::dir)
 		.register_fn("env", Cmd::env)
 		.register_fn("env_clear", Cmd::env_clear)
-		.register_result_fn("execute", Cmd::execute)
-		.register_result_fn("output", Cmd::output)
+		.register_fn("execute", Cmd::execute)
+		.register_fn("output", Cmd::output)
 		.register_static_module("cmd", cmd_mod.into());
 }

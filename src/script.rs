@@ -4,7 +4,8 @@ use std::path::Path;
 use std::fs::read_to_string;
 
 use rhai::{
-	Engine, Array, Scope, StaticVec, AST, FuncArgs, EvalAltResult, ParseError
+	Engine, Array, Scope, AST, FuncArgs, EvalAltResult, ParseError,
+	CallFnOptions
 };
 use rhai::packages::{StandardPackage, Package};
 
@@ -62,18 +63,14 @@ impl Script {
 		name: &str,
 		args: impl FuncArgs
 	) -> Result<()> {
-
-		let mut arg_values = StaticVec::new_const();
-		args.parse(&mut arg_values);
-
-		let _ = self.engine.call_fn_raw(
+		let _ = self.engine.call_fn_with_options(
+			CallFnOptions::new()
+				.eval_ast(false)
+				.rewind_scope(false),
 			&mut self.scope,
 			&self.ast,
-			false,
-			false,
 			name,
-			None,
-			arg_values
+			args
 		)?;
 
 		Ok(())
@@ -104,7 +101,7 @@ fn new_engine() -> Engine {
 			println!("{}", s);
 		})
 		.register_fn("print", print_bool)
-		.register_result_fn("print", print_arr)
+		.register_fn("print", print_arr)
 		.register_fn("prompt", prompt)
 		.register_fn("panic", panic);
 

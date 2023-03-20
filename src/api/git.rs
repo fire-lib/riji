@@ -424,15 +424,15 @@ fn line_color(line: &DiffLine) -> Style {
 
 pub fn add(engine: &mut Engine) {
 	engine
-		.register_result_fn("git", Git::new)
-		.register_result_fn("git_clone", Git::clone)
+		.register_fn("git", Git::new)
+		.register_fn("git_clone", Git::clone)
 		.register_fn("diff", Git::diff)
-		.register_result_fn("apply_diff", Git::apply_diff::<DiffInFile>)
-		.register_result_fn("apply_diff", Git::apply_diff::<Diff>)
-		.register_result_fn("force_head", Git::force_head)
-		.register_result_fn("checkout_tag", Git::checkout_tag)
-		.register_result_fn("print", Diff::print)
-		.register_result_fn("to_file", Diff::to_file)
-		.register_result_fn("to_string", Diff::to_string)
-		.register_result_fn("diff_from_file", DiffInFile::from_file);
+		.register_fn("apply_diff", Git::apply_diff::<DiffInFile>)
+		.register_fn("apply_diff", Git::apply_diff::<Diff>)
+		.register_fn("force_head", Git::force_head)
+		.register_fn("checkout_tag", Git::checkout_tag)
+		.register_fn("print", Diff::print)
+		.register_fn("to_file", Diff::to_file)
+		.register_fn("to_string", Diff::to_string)
+		.register_fn("diff_from_file", DiffInFile::from_file);
 }
