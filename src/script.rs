@@ -115,20 +115,31 @@ fn new_engine() -> Engine {
 	engine
 }
 
-fn print_arr(arr: Array) -> RhaiResult<()> {
-	for el in arr {
-		let s = el.into_immutable_string()?;
-		println!("{}", s.as_str());
+fn print_arr(arr: Array) -> String {
+	let mut s = String::new();
+	for (i, el) in arr.into_iter().enumerate() {
+		if i != 0 {
+			s.push('\n');
+		}
+
+		match el.into_immutable_string() {
+			Ok(i) => s.push_str(i.as_str()),
+			Err(e) => {
+				s.push_str("error: ");
+				s.push_str(e);
+			}
+		}
 	}
-	Ok(())
+
+	s
 }
 
-fn print_bool(b: bool) {
+fn print_bool(b: bool) -> String {
 	if b {
-		println!("true");
+		"true"
 	} else {
-		println!("false");
-	}
+		"false"
+	}.to_string()
 }
 
 fn prompt(s: &str) -> bool {

@@ -6,13 +6,14 @@ authors = ["Sören Meier <info@s-me.ch>"]
 repository = "https://github.com/fire-lib/riji"
 edition = "2021"
 license = "MIT OR Apache-2.0"
+rust-version = "1.65"
 
 [profile.release]
 lto = true
 
 [dependencies]
-rhai = { version = "1.9", features = ["no_float", "only_i64", "no_closure", "internals", "metadata"] }
-git2 = "0.16"
+rhai = { version = "1", features = ["no_float", "only_i64", "no_closure", "internals", "metadata"] }
+git2 = "0.17"
 regex = "1.5.4"
 uuid = { version = "1.1", features = ["v4"] }
 dunce = "1.0"
@@ -20,5 +21,5 @@ toml = "0.7"
 
 # painting
 ansi_term = "0.12.1"
-ctor = "0.1.9"
+ctor = "0.2"
 output_vt100 = "0.1.2"

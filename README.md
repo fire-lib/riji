@@ -17,15 +17,21 @@ You should probably not use this crate.
 - `trim(str)`
 - `lowercase(str)`
 - `uppercase(str)`
+- `starts_with(str, str)`
+- `ends_with(str, str)`
+- `sort_strs(array)` 
+- `env_os()` returns windows | linux | unknown
 
 ### Command api
 - `cmd(str|array)`
-- `cmd::arg(str)`
-- `cmd::dir(str)`
-- `cmd::env(str, str)`
-- `cmd::env_clear(str)`
-- `cmd::execute`
-- `cmd::output`
+- `cmd.arg(str)`
+- `cmd.args(array)`
+- `cmd.dir(str)`
+- `cmd.env(str, str)`
+- `cmd.env_clear()`
+- `cmd.execute`
+- `cmd.output`
+- `cmd::execute_parallel`
 
 ### Fs api
 - `fs::is_dir(str)`
@@ -46,20 +52,28 @@ You should probably not use this crate.
 ### Git api
 - `git(path: str)`
 - `git_clone(url: str, path: str)`
-- `git::diff`
-- `git::apply_diff`
-- `git::force_head`
-- `git::checkout_tag`
-- `diff::print`
-- `diff::to_file`
-- `diff::to_string`
-- `diff_from_file`
+- `git.diff()`
+- `git.apply_diff(diff)`
+- `git.force_head()`
+- `git.checkout_tag(str)`
+- `diff_from_file(str)`
+- `diff.print()`
+- `diff.to_file(str)`
+- `diff.to_string()`
+- `diff_from_file(str)`
 
 ### Regex api
 - `regex(pat: str)`
-- `regex::matches(in: str) -> bool`
-- `regex::replace(where: str, with: str)`
-- `regex::find(in: str) -> str`
-- `regex::captures(in: str) -> [str]`
-- `regex::replace_file(path: str, with: str)`
-- `regex::matches_file(path: str) -> bool`
+- `regex.matches(in: str) -> bool`
+- `regex.replace(where: str, with: str)`
+- `regex.find(in: str) -> str`
+- `regex.captures(in: str) -> [str]`
+- `regex.captures_all(in: str) -> [str]`
+- `regex.replace_file(path: str, with: str)`
+- `regex.matches_file(path: str) -> bool`
+
+### Toml api
+- `toml::read(str)`
+- `toml::parse(str)`
+- `toml::write(str, dyn)`
+- `toml::stringify(dyn)`
