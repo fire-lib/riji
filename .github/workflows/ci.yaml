@@ -1,0 +1,44 @@
+# Workflow recipe from https://github.com/actions-rs/meta/blob/master/recipes/msrv.md
+on: 
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+env:
+  RUSTFLAGS: -Dwarnings
+  # change manually in matrix
+  rust_min: 1.65.0
+
+jobs:
+  test-ubuntu:
+    name: Test Ubuntu
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust:
+          - stable
+          - nightly
+          - 1.65.0
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust }}
+      - run: cargo test
+
+  test-windows:
+    name: Test Windows
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        rust:
+          - stable
+          - nightly
+          - 1.65.0
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust }}
+      - run: cargo test
