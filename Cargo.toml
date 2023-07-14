@@ -1,7 +1,7 @@
 [package]
 name = "riji"
 description = "Scripting environment using rhai"
-version = "0.1.9"
+version = "0.1.10"
 authors = ["Sören Meier <info@s-me.ch>"]
 repository = "https://github.com/fire-lib/riji"
 edition = "2021"
@@ -10,6 +10,10 @@ rust-version = "1.65"
 
 [profile.release]
 lto = true
+
+[features]
+default = ["vendored-openssl"]
+vendored-openssl = ["git2/vendored-openssl"]
 
 [dependencies]
 rhai = { version = "1", features = ["no_float", "only_i64", "no_closure", "internals", "metadata"] }
