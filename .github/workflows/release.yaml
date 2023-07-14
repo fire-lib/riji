@@ -40,40 +40,14 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: riji.exe
-          path: ./riji.exe
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
           name: riji
-          path: ./riji
 
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-
-      - name: Upload Release Asset
-        id: upload-release-asset-windows 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./riji.exe
-          asset_name: riji.exe
-          asset_content_type: application/octet-stream
-
-      - name: Upload Release Asset
-        id: upload-release-asset-linux 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./riji
-          asset_name: riji
-          asset_content_type: application/octet-stream
+          files: |
+            riji.exe
+            riji
