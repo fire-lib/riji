@@ -40,12 +40,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: riji.exe
-        path: ./riji.exe
+          path: ./riji.exe
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
           name: riji
-        path: ./riji
+          path: ./riji
 
       - name: Create Release
         id: create_release
