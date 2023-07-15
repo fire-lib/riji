@@ -39,6 +39,18 @@ fn main() {
 }
 
 fn execute() -> Result<()> {
+	let mut args = std::env::args()
+		.skip(1);
+	let cmd = args.next()
+		.unwrap_or("help".into());
+	let args: Vec<_> = args.collect();
+
+	if cmd == "--version" {
+		println!("Riji version {}", env!("CARGO_PKG_VERSION"));
+		return Ok(())
+	}
+
+
 	let mut script = if let Ok(file) = env::var("RIJI_SCRIPT") {
 		let path = Path::new(&file);
 		let parent = path.parent()
@@ -55,12 +67,6 @@ fn execute() -> Result<()> {
 	} else {
 		Script::new("./riji.rhai")?
 	};
-
-	let mut args = std::env::args()
-		.skip(1);
-	let cmd = args.next()
-		.unwrap_or("help".into());
-	let args: Vec<_> = args.collect();
 
 	script.execute(&cmd, args)
 }

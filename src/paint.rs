@@ -41,21 +41,21 @@ macro_rules! epaintln {
 #[macro_export]
 macro_rules! paint_err {
 	($($args:tt)*) => (
-		$crate::paintln!($crate::paint::Red, $($args)*)
+		$crate::epaintln!($crate::paint::Red, $($args)*)
 	)
 }
 
 #[macro_export]
 macro_rules! paint_ok {
 	($($args:tt)*) => (
-		$crate::paintln!($crate::paint::Green, $($args)*)
+		$crate::epaintln!($crate::paint::Green, $($args)*)
 	)
 }
 
 #[macro_export]
 macro_rules! paint_dbg {
 	($($args:tt)*) => (
-		$crate::paintln!($crate::paint::White.dimmed(), $($args)*)
+		$crate::epaintln!($crate::paint::White.dimmed(), $($args)*)
 	)
 }
 
@@ -63,6 +63,6 @@ macro_rules! paint_dbg {
 #[macro_export]
 macro_rules! paint_act {
 	($($args:tt)*) => (
-		$crate::paintln!($crate::paint::Yellow, $($args)*)
+		$crate::epaintln!($crate::paint::Yellow, $($args)*)
 	)
 }
