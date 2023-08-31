@@ -20,6 +20,7 @@ pub mod fs;
 pub mod regex;
 pub mod other;
 pub mod toml;
+pub mod util;
 
 fn git_err(e: git2::Error) -> RhaiError {
 	err!("{:?}", e)

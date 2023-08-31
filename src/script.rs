@@ -13,6 +13,7 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 pub type RhaiResult<T> = std::result::Result<T, Box<EvalAltResult>>;
 
+
 #[derive(Debug)]
 pub enum Error {
 	Rhai(Box<EvalAltResult>),
@@ -46,7 +47,6 @@ pub struct Script {
 }
 
 impl Script {
-
 	pub fn new(p: impl AsRef<Path>) -> Result<Self> {
 		let engine = new_engine();
 		let mut scope = Scope::new();
@@ -83,7 +83,6 @@ impl Script {
 	) -> Result<()> {
 		self.call_fn(cmd, args)
 	}
-
 }
 
 
@@ -111,6 +110,7 @@ fn new_engine() -> Engine {
 	crate::api::regex::add(&mut engine);
 	crate::api::other::add(&mut engine);
 	crate::api::toml::add(&mut engine);
+	crate::api::util::add(&mut engine);
 
 	engine
 }
