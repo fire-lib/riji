@@ -60,6 +60,10 @@ fn sort_strs(a: Array) -> RhaiResult<Array> {
 	Ok(ar)
 }
 
+fn sleep(ms: i64) {
+	std::thread::sleep(std::time::Duration::from_millis(ms as u64));
+}
+
 pub fn add(engine: &mut Engine) {
 	engine
 		.register_fn("uuid_v4", uuid_v4)
@@ -70,5 +74,6 @@ pub fn add(engine: &mut Engine) {
 		.register_fn("starts_with", starts_with)
 		.register_fn("ends_with", ends_with)
 		.register_fn("sort_strs", sort_strs)
-		.register_fn("env_os", env_os);
+		.register_fn("env_os", env_os)
+		.register_fn("sleep", sleep);
 }

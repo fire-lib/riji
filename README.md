@@ -21,6 +21,7 @@ You should probably not use this crate.
 - `ends_with(str, str)`
 - `sort_strs(array)` 
 - `env_os()` returns windows | linux | unknown
+- `sleep(ms)`
 
 ### Command api
 - `cmd(str|array)`
